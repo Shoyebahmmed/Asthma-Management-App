@@ -1,0 +1,349 @@
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, TouchableWithoutFeedback, ImageBackground, ScrollView } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { CheckBox } from 'react-native-elements';
+
+
+export default function Profile_Page_Edit () {
+  
+  const [userData, setData] = useState({ 
+    user_name: '', 
+    DOB: '',
+    email: '',
+    address: '',
+    medicalCondition_detail:'' 
+  });
+
+  const [name, setName] = useState(true);
+  const [dob, setDOB] = useState(true);
+  const [email, setEmail] = useState(true);
+  const [address, setAddress] = useState(true);
+  const [medicalCondition, setMedicalCondition] = useState(true);
+
+  const [checked1, setChecked1] = useState(false);
+  const [checked2, setChecked2] = useState(false);
+  const [checked3, setChecked3] = useState(false);
+  const [checked4, setChecked4] = useState(false);
+  const [checked5, setChecked5] = useState(false);
+  return (
+    <View style={styles.container}>
+    <ScrollView>
+    
+
+        <Text style={styles.profile}>Profile</Text>
+
+        <Image 
+        source={require("./img_and_icon/drawable-hdpi/ProfileIcon.png")}
+        style = {styles.icon}
+        />
+
+        <View style={styles.body}>
+
+        <Text style={styles.name}>Name</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.textBox}
+            onChangeText={(inputText) => setText(inputText)}
+            value={name}
+            placeholder="Username"
+          />
+            
+          <View>
+            {/* <TouchableOpacity onPress={handelEditPress}>
+              <Icon name="edit" size={20} color="#555" />
+            </TouchableOpacity> */}
+            <TouchableOpacity onPress={() => alert('changed')}
+                      activeOpacity={0.5}>
+                      <Image source={require('./img_and_icon/drawable-hdpi/EditButton.png')} 
+                      style={styles.editbtnName} 
+                      resizeMode='stretch'
+                      />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <Text style={styles.DOB}>DOB</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.textBox}
+            onChangeText={(inputText) => setText(inputText)}
+            value={dob}
+            placeholder="DD/MM/YY"
+          />
+          <View>
+              <TouchableOpacity onPress={() => alert('changed')}
+                        activeOpacity={0.5}>
+                        <Image source={require('./img_and_icon/drawable-hdpi/EditButton.png')} 
+                        style={styles.editbtnDOB} 
+                        resizeMode='stretch'
+                        />
+              </TouchableOpacity>
+            </View>
+          </View>
+        <Text style={styles.email}>Email</Text>
+        <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textBox}
+          onChangeText={(inputText) => setText(inputText)}
+          value={email}
+          placeholder="email@gmail.com"
+        />
+          <View>
+            <TouchableOpacity onPress={() => alert('changed')}
+                      activeOpacity={0.5}>
+                      <Image source={require('./img_and_icon/drawable-hdpi/EditButton.png')} 
+                      style={styles.editbtnEmail} 
+                      resizeMode='stretch'
+                      />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <Text style={styles.address}>Address</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.textBox}
+            onChangeText={(inputText) => setText(inputText)}
+            value={address}
+            placeholder="Street name, Suburb, State"
+          />
+          <View>
+            <TouchableOpacity onPress={() => alert('changed')}
+                      activeOpacity={0.5}>
+                      <Image source={require('./img_and_icon/drawable-hdpi/EditButton.png')} 
+                      style={styles.editbtnAddress} 
+                      resizeMode='stretch'
+                      />
+            </TouchableOpacity>
+          </View>
+          </View>
+        <Text style={styles.medicalCondition}>Medical/Condition Details</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.textBox}
+            onChangeText={(inputText) => setText(inputText)}
+            value={medicalCondition}
+            placeholder="Details"
+          />
+          <View>
+            <TouchableOpacity onPress={() => alert('changed')}
+                      activeOpacity={0.5}>
+                      <Image source={require('./img_and_icon/drawable-hdpi/EditButton.png')} 
+                      style={styles.editbtnMC} 
+                      resizeMode='stretch'
+                      />
+            </TouchableOpacity>
+          </View>
+          </View>
+        <Text style={styles.asthamaTriggers}>Asthama Triggers</Text>
+
+
+        <View>
+      <CheckBox
+        title='Mould'
+        checked={checked1}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+        onPress={() => setChecked1(!checked1)}
+      />
+      <CheckBox
+        title='Hay Fever'
+        checked={checked2}
+        onPress={() => setChecked2(!checked2)}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+      />
+      <CheckBox
+        title='Air Quality'
+        checked={checked3}
+        onPress={() => setChecked3(!checked3)}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+      />
+      <CheckBox
+        title='Extreme Weather'
+        checked={checked4}
+        onPress={() => setChecked4(!checked4)}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+      />
+      <CheckBox
+        title='Colds'
+        checked={checked5}
+        onPress={() => setChecked5(!checked5)}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+      />
+      <CheckBox
+        title='Cold air'
+        checked={checked5}
+        onPress={() => setChecked5(!checked5)}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+      />
+      <CheckBox
+        title='Cigarette amoke'
+        checked={checked5}
+        onPress={() => setChecked5(!checked5)}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+      />
+      <CheckBox
+        title='Viruses'
+        checked={checked5}
+        onPress={() => setChecked5(!checked5)}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+      />
+      <CheckBox
+        title='Gardening'
+        checked={checked5}
+        onPress={() => setChecked5(!checked5)}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+      />
+      <CheckBox
+        title='Animals'
+        checked={checked5}
+        onPress={() => setChecked5(!checked5)}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+      />
+      <CheckBox
+        title='Other'
+        checked={checked5}
+        onPress={() => setChecked5(!checked5)}
+        containerStyle={{ 
+          backgroundColor: 'transparent', // transparent background
+          borderWidth: 0 // no border
+        }}
+      />
+    </View>
+        
+
+        <View style={styles.empty}>
+          <Text></Text>
+        </View>
+        </View>
+    </ScrollView>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+  },
+  profile: {
+    fontSize: 25, 
+    fontWeight: 'bold',  
+    marginTop: 20, 
+    alignSelf: 'center',
+  },
+  icon: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+    alignSelf: 'center',
+  },
+  body: {
+    
+  },
+  editbtnName: {
+    width: 20,
+    height: 20,
+    marginLeft: 220,
+  },
+  editbtnDOB: {
+    width: 20,
+    height: 20,
+    marginLeft: 212,
+  },
+  editbtnEmail:{
+    width: 20,
+    height: 20,
+    marginLeft: 170,
+  },
+  editbtnAddress:{
+    width: 20,
+    height: 20,
+    marginLeft: 115,
+  },
+  editbtnMC:{
+    width: 20,
+    height: 20,
+    marginLeft: 240,
+  },
+  name: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    marginBottom: 20,
+  },
+  DOB: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  email: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  address: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  medicalCondition: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  asthamaTriggers: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+  },
+  checkboxes: {
+    borderColor: 'black',
+  },
+  checkboxName: {
+    marginTop: 15,
+    fontSize: 18,
+    marginLeft: -15,
+  },
+  empty: {
+    marginBottom: 70,
+  },
+});
+
