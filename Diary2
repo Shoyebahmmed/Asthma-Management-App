@@ -1,0 +1,136 @@
+
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, TouchableWithoutFeedback, ImageBackground, ScrollView } from 'react-native';
+
+const Diary2 = () => {
+  const [date, setDate] = useState(new Date().toLocaleDateString());
+
+  return (
+    <ScrollView>
+      <ImageBackground source={require('./img_and_icon/drawable-hdpi/Rectangle.png')} style={styles.container}>
+        <View style={styles.header}>
+            <View>
+                <TouchableOpacity onPress={() => alert('going back')}
+                activeOpacity={0.5}>
+                <Image source={require('./img_and_icon/drawable-hdpi/IconArrowLeft.png')} 
+                style={styles.BackBtn} 
+                resizeMode='stretch'
+                />
+                </TouchableOpacity>
+            </View>
+            <Image source={require('./img_and_icon/drawable-hdpi/AddNote.png')} />
+            <View>
+                <TouchableOpacity onPress={() => alert('deleted')}
+                activeOpacity={0.5}>
+                <Image source={require('./img_and_icon/drawable-hdpi/DeleteButton.png')} 
+                style={styles.DeleteBtn} 
+                resizeMode='stretch'
+                />
+                </TouchableOpacity>
+            </View>
+        </View>
+
+        <View style={{ 
+            borderBottomWidth: 1, 
+            borderBottomColor: 'black', 
+            marginVertical: 10,
+            marginTop: -20, 
+            }}>
+
+        </View>
+
+
+        <View style={styles.body}>
+          <View style={styles.textBox}>
+            <TextInput
+                style={styles.textBox}
+                placeholder="Title"
+            />
+        </View>
+
+        <View style={{ 
+            borderBottomWidth: 1, 
+            borderBottomColor: 'black', 
+            marginVertical: 10,
+            marginTop: -20, 
+            marginRight: 50,
+            }}>
+        </View>
+
+        <View style={styles.textBoxNote}>
+            <TextInput
+                style={styles.textBoxNote}
+                placeholder="Note"
+            />
+        </View>
+
+          <TouchableOpacity onPress={() => alert('added')} style={styles.button}>
+            <Image source={require('./img_and_icon/drawable-hdpi/AddSignButton.png')} style={styles.buttonImage} resizeMode='stretch' />
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#E8F3FF',
+    height: 1000,
+  },
+
+  header: {
+    height: 100,
+    fontSize: 24,
+    marginTop: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    // marginRight: 150,
+  },
+
+  BackBtn: {
+    marginHorizontal: 50,
+    width: 50,
+    height: 40,
+  },
+
+  DeleteBtn: {
+    marginHorizontal: 50,
+    width: 40,
+    height: 40,
+  },
+
+  body: {
+    marginLeft: 40,
+  },
+
+  textBox: {
+    marginBottom: 20,
+    marginRight: 30,
+    color: 'gray',
+    fontSize: 34,
+    opacity: 0.6,
+  },
+
+  textBoxNote: {
+    marginBottom: 20,
+    color: 'gray',
+    fontSize: 34,
+  },
+
+  button: {
+    bottom: 20,
+    marginLeft: 100,
+  },
+
+  buttonImage:{
+        position: 'relative',
+        bottom: 20,
+        top: 500,
+        marginLeft: 180,
+    }
+});
+
+export default Diary2;
