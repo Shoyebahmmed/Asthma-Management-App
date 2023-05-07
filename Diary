@@ -1,0 +1,84 @@
+
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, TouchableWithoutFeedback, ImageBackground, ScrollView } from 'react-native';
+
+const Diary = () => {
+  const [date, setDate] = useState(new Date().toLocaleDateString());
+  const [notes, setNotes] = useState('');
+
+  const handleChangeNotes = (value) => {
+    setNotes(value);
+  }
+
+  return (
+    <ScrollView>
+      <ImageBackground source={require('./img_and_icon/drawable-hdpi/Rectangle.png')} style={styles.container}>
+        <View style={styles.header}>
+          <Image source={require('./img_and_icon/drawable-hdpi/Diary.png')} />
+        </View>
+
+        <View style={styles.body}>
+          <View style={styles.textBox}>
+            <TextInput
+                style={styles.input}
+                placeholder={`Date: ${date} ${notes}`}
+                value={notes}
+            //   onChangeText={text => setNotes(text)}
+                onChangeText={handleChangeNotes}
+                placeholderTextColor="#999999"
+              
+            />
+          </View>
+
+          <TouchableOpacity onPress={() => alert('added')} style={styles.button}>
+            <Image source={require('./img_and_icon/drawable-hdpi/AddSignButton.png')} style={styles.buttonImage} resizeMode='stretch' />
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#E8F3FF',
+    height: 1000,
+  },
+
+  header: {
+    height: 100,
+    fontSize: 24,
+    marginTop: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  body: {
+    marginLeft: 40,
+  },
+
+  textBox: {
+    marginTop: 10,
+    marginBottom: 20,
+    marginRight: 30,
+    color: 'black',
+    backgroundColor: '#FFFFFF',
+    padding: 10,
+  },
+
+  button: {
+    // position: 'absolute',
+    bottom: 20,
+    marginLeft: 100,
+  },
+
+  buttonImage:{
+        position: 'relative',
+        bottom: 20,
+        top: 500,
+        marginLeft: 180,
+    }
+});
+
+export default Diary;
